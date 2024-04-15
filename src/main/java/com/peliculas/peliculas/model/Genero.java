@@ -14,8 +14,10 @@ public class Genero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "genero_id")
     private Long id;
 
+    @Column(name= "genero_nombre")
     private String nombre;
 
     @ManyToMany(mappedBy = "generos")

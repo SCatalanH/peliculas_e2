@@ -2,7 +2,6 @@ package com.peliculas.peliculas.controller;
 
 import com.peliculas.peliculas.model.Pelicula;
 import com.peliculas.peliculas.service.PeliculaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ public class PeliculaController {
 
     private final PeliculaService peliculaService;
 
-    @Autowired
+    
     public PeliculaController(PeliculaService peliculaService) {
         this.peliculaService = peliculaService;
     }
