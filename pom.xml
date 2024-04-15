@@ -38,7 +38,24 @@
    		 	<artifactId>jakarta.persistence-api</artifactId>
     		<version>3.0.0</version>
 		</dependency>
-
+		<dependency>
+        	<groupId>com.oracle.database.security</groupId>
+        	<artifactId>oraclepki</artifactId>
+        	<version>21.5.0.0</version>
+        	<scope>runtime</scope>
+    	</dependency>
+		<dependency>
+        	<groupId>com.oracle.database.security</groupId>
+        	<artifactId>osdt_cert</artifactId>
+        	<version>21.5.0.0</version>
+        	<scope>runtime</scope>
+    	</dependency>
+		<dependency>
+        	<groupId>com.oracle.database.security</groupId>
+        	<artifactId>osdt_core</artifactId>
+        	<version>21.5.0.0</version>
+        	<scope>runtime</scope>
+    	</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -49,6 +66,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>19.8.0.0</version> <!-- o la versión más reciente disponible -->
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -64,6 +86,11 @@
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
 	</dependencies>
 

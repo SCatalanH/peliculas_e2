@@ -1,23 +1,28 @@
 package com.peliculas.peliculas.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 
 @Entity
-@Table(name = "resenas")
+@Table(name = "resena")
 public class Resena {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String contenido;
-    
+
+    private String comentario;
+
+    @ManyToOne
+    @JoinColumn(name = "pelicula_id")
+    private Pelicula pelicula;
+
     // Getters y setters
-    
+
     public Long getId() {
         return id;
     }
@@ -26,11 +31,19 @@ public class Resena {
         this.id = id;
     }
 
-    public String getContenido() {
-        return contenido;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
     }
 }

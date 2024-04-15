@@ -4,29 +4,40 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+import java.util.List;
+
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "pelicula")
 public class Pelicula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titulo;
-    private String director;
-    private int anioEstreno;
 
-    // Constructor vacío
-    public Pelicula() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "director_id")
+    private Director director;
 
-    // Constructor con parámetros
-    public Pelicula(String titulo, String director, int anioEstreno) {
-        this.titulo = titulo;
-        this.director = director;
-        this.anioEstreno = anioEstreno;
-    }
+    @ManyToMany
+    @JoinTable(
+        name = "pelicula_genero",
+        joinColumns = @JoinColumn(name = "pelicula_id"),
+        inverseJoinColumns = @JoinColumn(name = "genero_id")
+    )
+    private List<Genero> generos;
+
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Resena> resenas;
 
     // Getters y setters
+
     public Long getId() {
         return id;
     }
@@ -43,19 +54,27 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
-    public String getDirector() {
+    public Director getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(Director director) {
         this.director = director;
     }
 
-    public int getAnioEstreno() {
-        return anioEstreno;
+    public List<Genero> getGeneros() {
+        return generos;
     }
 
-    public void setAnioEstreno(int anioEstreno) {
-        this.anioEstreno = anioEstreno;
+    public void setGeneros(List<Genero> generos) {
+        this.generos = generos;
+    }
+
+    public List<Resena> getResenas() {
+        return resenas;
+    }
+
+    public void setResenas(List<Resena> resenas) {
+        this.resenas = resenas;
     }
 }
